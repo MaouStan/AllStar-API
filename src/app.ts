@@ -9,6 +9,8 @@ import { voteRouter } from './api/vote';
 import { authRouter } from './api/auth';
 import { userRouter } from './api/user';
 import { settingsRouter } from './api/settings';
+import path from 'path';
+
 // App Variables
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.use(
     origin: "*"
   })
 );
+
+app.use('/images', express.static(path.join(__dirname, '..', 'public', 'images')));
 
 // JWT middleware
 app.use(jwtAuthen);
